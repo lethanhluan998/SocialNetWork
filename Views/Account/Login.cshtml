@@ -1,0 +1,122 @@
+﻿@{
+    Layout = null;
+}
+@model WebVuiVN.Models.ViewModels.AccountViewModels.LoginViewModel
+@using System.Linq
+@*@inject SignInManager<AppUser> SignInManager*@
+@{
+    ViewData["Title"] = "Index";
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="apple-touch-icon icon" href="~/Socialnetwork/img/favivon.jpg">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700" rel="stylesheet">
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">-->
+    <!--<link rel="stylesheet" href="css/animate.min.css">-->
+    <!--<link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="~/Socialnetwork/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Socialnetwork/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Socialnetwork/css/main.css">
+    <title>@ViewData["Title"]</title>
+</head>
+<body class="page-login logged-out page-signup page-signup--v2">
+    <header class="header py-4 bg-dark text-white">
+        <div class="container py-1">
+            <div class="row d-flex justify-content-between align-items-center">
+                <div class="brand">
+                    <a href="/">
+                        <img src="~/Socialnetwork/img/logo.png" alt="JAIZER LOGO" class="img-fluid">
+                    </a>
+                </div>
+                <div>
+                    <div class="login-form">
+                        <a class="btn btn-link text-white fs-12" asp-area="" asp-controller="Account" asp-action="Register">Sign up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+    </header>
+    <!-- ============  content =============== -->
+    <div class="container">
+        <div class="row my-5 p-5 fs-14 justify-content-center">
+            <div class="col-12 col-sm-10 col-md-6 col-lg-5 col-xl-4">
+                <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label asp-for="RememberMe">
+                                <input asp-for="RememberMe" />
+                                @Html.DisplayNameFor(m => m.RememberMe)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Login" class="btn btn-primary" />
+                    </div>
+                </form>
+                <section>
+                    @*<h4>Use another service to log in.</h4>*@
+                    @*<hr />*@
+                    @*@{
+                            var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+                            if (loginProviders.Count == 0)
+                            {
+                                <div>
+                                    <p>
+                                        There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                                        for details on setting up this ASP.NET application to support logging in via external services.
+                                    </p>
+                                </div>
+                            }
+                            else
+                            {
+                                <form asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                                    <div>
+                                        <p>
+                                            @foreach (var provider in loginProviders)
+                                            {
+                                                <button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.Name</button>
+                                            }
+                                        </p>
+                                    </div>
+                                </form>
+                            }
+                        }*@
+                </section>
+                <div class="divider"></div>
+                <div class="text-center">Not a member? <a asp-area="" asp-controller="Account" asp-action="Register">Sign up now</a></div>
+            </div>
+            <!--column end-->
+        </div>
+        <!--row end-->
+    </div>
+    <!--container end-->
+    <!--<script src="js/vendor/jquery.min.js"></script>-->
+    <!--<script src="js/vendor/popper.js"></script>-->
+    <!--<script src="js/vendor/bootstrap.min.js"></script>-->
+    <!--<script src="js/vendor/owl.carousel.min.js"></script>-->
+    <!--<script src="js/main.min.js"></script>-->
+    <!--<script src="js/vendor/jquery.min.js"></script>-->
+    <!--<script src="js/vendor/popper.js"></script>-->
+    <!--<script src="js/vendor/bootstrap.min.js"></script>-->
+    <!--<script src="js/vendor/owl.carousel.min.js"></script>-->
+    <!--<script src="js/main.min.js"></script>-->
+
+</body>
+</html>
+

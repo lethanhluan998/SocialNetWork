@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <UserSecretsId>afade912-7701-4193-aaec-d284892d5f56</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="3.1.0-preview2.19525.6" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Modules\WebVuiVN.Application\WebVuiVN.Application.csproj" />
+    <ProjectReference Include="Modules\WebVuiVN.Data.EF\WebVuiVN.Data.EF.csproj" />
+    <ProjectReference Include="Modules\WebVuiVN.Data\WebVuiVN.Data.csproj" />
+    <ProjectReference Include="Modules\WebVuiVN.Infrastructure\WebVuiVN.Infrastructure.csproj" />
+    <ProjectReference Include="Modules\WebVuiVN.Utilities\WebVuiVN.Utilities.csproj" />
+  </ItemGroup>
+</Project>
