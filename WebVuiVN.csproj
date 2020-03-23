@@ -7,16 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\components\Layout.tsx" />
+    <Compile Remove="wwwroot\Socialnetwork\NewFolder\**" />
+    <Content Remove="wwwroot\Socialnetwork\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\Socialnetwork\NewFolder\**" />
+    <None Remove="wwwroot\Socialnetwork\NewFolder\**" />
+    <TypeScriptCompile Remove="wwwroot\Socialnetwork\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="appclient\src\home.tsx" />
+    <None Remove="appclient\src\router\index.tsx" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.1.0" />
-    <PackageReference Include="JavaScriptEngineSwitcher.Extensions.MsDependencyInjection" Version="3.3.0" />
-    <PackageReference Include="JavaScriptEngineSwitcher.V8" Version="3.3.1" />
-    <PackageReference Include="JavaScriptEngineSwitcher.V8.Native.win-x64" Version="3.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="2.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="3.1.0-preview2.19525.6" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.8.3">
       <PrivateAssets>all</PrivateAssets>
@@ -32,5 +40,8 @@
     <ProjectReference Include="Modules\WebVuiVN.Data\WebVuiVN.Data.csproj" />
     <ProjectReference Include="Modules\WebVuiVN.Infrastructure\WebVuiVN.Infrastructure.csproj" />
     <ProjectReference Include="Modules\WebVuiVN.Utilities\WebVuiVN.Utilities.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="appclient\public\Home\" />
   </ItemGroup>
 </Project>

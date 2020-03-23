@@ -3,6 +3,14 @@
     ViewData["Title"] = Model.Title;
     ViewData["NameUser"] = Model.User.FullName;
 }
+<script crossorigin=crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js">
+</script>
+<script crossorigin=crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js">
+</script>
+<script src="@Url.Content("~/appclient/src/router/index.tsx")">
+</script>
 <main class="main-content mt-4">
     <div class="container">
         <div class="row">
@@ -89,7 +97,7 @@
                 <!--=========== user-feed ========-->
                 <div class="user-feed mb-5">
                     <!--feed post start: 1-->
-
+                    <div id="root"></div>
                     <div class="uf__post card bg-white border-light p-4 mt-4 mb-5">
                         <!--postmeta-->
                         <div class="uf__post__meta d-flex justify-content-start align-items-center">
@@ -1289,8 +1297,6 @@
 <div id="popup-chat">
     <!--max-window allowed to be open 2-->
     <!--window zero-->
-
-    
     <!------window 2------>
     <!------window 3------>
     <div class="popup-chat__window--btn card" data-chat-window="2">
@@ -1342,8 +1348,8 @@
             </div>
         </div>
         <div id="{{RoomId}}" class="card-body popup-chat__window__messages message-list">
-           
-            
+
+
         </div>
 
         <div class="card-footer bg-white">

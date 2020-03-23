@@ -14,9 +14,6 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Serialization;
 using WebVuiVN.Application.AutoMapper;
 using WebVuiVN.Application.Implementation;
@@ -27,6 +24,13 @@ using WebVuiVN.Helpers;
 using WebVuiVN.Infrastructure.Interfaces;
 using WebVuiVN.Service;
 using WebVuiVN.ChatHubs;
+// extension-asp.net core
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+// extension-reactjs
+using System.IO;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 
 namespace WebVuiVN
 {
@@ -123,7 +127,10 @@ namespace WebVuiVN
                 .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
             services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
-
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "appclient/build";
+            });
             services.Configure<RequestLocalizationOptions>(
               opts =>
               {
@@ -150,6 +157,7 @@ namespace WebVuiVN
             services.AddTransient<IRoomChatService, RoomChatService>();
 
             //   services.AddTransient<IRoomChatService, RoomChatService>();
+            
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -162,7 +170,9 @@ namespace WebVuiVN
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSpaStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseSignalR(routes =>
@@ -182,6 +192,16 @@ namespace WebVuiVN
                 routes.MapRoute(name: "areaRoute",
                     template: "{area:exists}/{controller=LoginModel}/{action=Login}/{id?}");
             });
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = Path.Join(env.ContentRootPath, "appclient");
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
+            });
+
         }
     }
 }
